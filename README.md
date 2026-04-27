@@ -19,19 +19,18 @@ The script:
 3. Cleans the data
 4. Builds searchable text from the PubMedQA context and long answer
 5. Generates:
-   - Sparse embeddings with SPLADE
-   - Dense embeddings with BGE
+   - Sparse embeddings with [`SPLADE`](https://www.pinecone.io/learn/splade/)
+   - Dense embeddings with [`BGE`](https://bge-model.com/)
 
-This is a good starting point for a hybrid biomedical search system.
 
 ## Project Structure
 
 ```text
-IQ_homeworks/
+hybrid-retrieval/
 ├── hybrid-retrieval.py
-├── README.md
-├── .env
-└── .venv/
+README.md
+requirements.txt
+env
 ```
 
 ## Requirements
@@ -63,7 +62,7 @@ source .venv/bin/activate
 Install the required packages:
 
 ```bash
-pip install numpy pandas datasets qdrant-client transformers fastembed
+pip install -r requirements.txt
 ```
 
 ## How to Run
@@ -85,6 +84,7 @@ When the script runs, it should:
 - Build a `combined_text` field for each document
 - Generate sparse embeddings
 - Generate dense embeddings
+- 
 
 ## Current Notes
 
@@ -99,25 +99,14 @@ If the script fails, these are the most likely causes:
 - Missing Python packages
 - Model download issues on first run
 - Dataset download/network issues
-- Limited memory while loading embedding models
+- Limited memory while loading embedding models(decrease number of documents)
 
 A quick fix is usually:
 
 ```bash
 pip install --upgrade pip
-pip install numpy pandas datasets qdrant-client transformers fastembed
+pip install -r requirements.txt
 ```
-
-## Next Improvements
-
-Good next steps for this project would be:
-
-- Add Qdrant collection creation
-- Store both dense and sparse vectors
-- Implement dense-only, sparse-only, and hybrid search
-- Add Reciprocal Rank Fusion (RRF)
-- Add example queries and result comparisons
-- Add a `requirements.txt` file
 
 ## Summary
 
